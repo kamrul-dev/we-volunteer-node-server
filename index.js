@@ -18,7 +18,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        const volunteerCollection = client.db('weVolunteer').collection('events');
+        const volunteerCollection = client.db('weVolunteer').collection('activities');
 
         console.log('Volunteer db in connected');
 
