@@ -19,8 +19,16 @@ async function run() {
     try {
         await client.connect();
         const volunteerCollection = client.db('weVolunteer').collection('activities');
-
         console.log('Volunteer db in connected');
+
+        // get api for all data
+        app.get('/activities', async (req, res) => {
+            const query = {};
+            const cursor = volunteerCollection.find(query);
+            const activities = await cursor.toArray();
+            res.send(activities);
+        })
+
 
     }
     finally {
